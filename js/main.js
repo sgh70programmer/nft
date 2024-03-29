@@ -1,23 +1,30 @@
-const lightModeBtn = document.getElementById("lightModeBtn")
-const darkModeBtn = document.getElementById("darkModeBtn")
-
-if (localStorage.getItem("theme") == "dark") {
-  themeMode(darkModeBtn, lightModeBtn, "dark")
-} else {
-  themeMode(lightModeBtn, darkModeBtn, "light")
-}
-function themeMode(btnActive, btnDisavtive, theme) {
-  btnActive.classList.add("active")
-  btnDisavtive.classList.remove("active")
-  document.documentElement.setAttribute("data-bs-theme", theme)
-  localStorage.setItem("theme", theme)
-}
-
-lightModeBtn.addEventListener("click", () => {
-  themeMode(lightModeBtn, darkModeBtn, "light")
+const trendBoxs = document.querySelectorAll(".trends_box")
+if(this.window.innerWidth < 576){
+  trendBoxs.forEach(function(item, i){
+    if(i >= 2){
+      item.style.transform="translateY(-70px)"
+    }
+  })
+}else{ trendBoxs.forEach(function(item){
+  if(item.style.transform != null){
+    item.style.transform="none"
+  }
 })
 
-darkModeBtn.addEventListener("click", () => {
-  themeMode(darkModeBtn, lightModeBtn, "dark")
-})
+}
 
+window.addEventListener("resize", function(){
+  if(this.window.innerWidth < 576){
+    trendBoxs.forEach(function(item, i){
+      if(i >= 2){
+        item.style.transform="translateY(-70px)"
+      }
+    })
+  }else{ trendBoxs.forEach(function(item){
+    if(item.style.transform != null){
+      item.style.transform="none"
+    }
+  })
+
+  }
+})
